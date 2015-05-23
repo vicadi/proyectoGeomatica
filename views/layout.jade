@@ -1,0 +1,42 @@
+doctype html
+html
+ head
+  meta(charset="utf-8")
+  title= title
+  script(type='text/javascript', src='/js/jquery-1.10.2.js')
+  script(type='text/javascript', src='/js/bootstrap.js')
+  script(type='text/javascript', src='/js/script.js')
+  link(rel='stylesheet', href='/css/bootstrap.min.css')
+  link(rel='stylesheet', href='/css/style.css')
+ body
+  #logo
+    a(href='/') 
+     img(src='/images/logo.png')
+  #titulo
+    p RUTAS ESTUDIANTILES
+  #barra
+   ul.nav.nav-pills
+    li(class=pesHome)
+     a(href='/') 
+      b Home
+    li(class=pesVerRutas)
+     a(href='/') 
+      b Ver Rutas
+    li(class=pesBuscarRutas)
+     a(href='/') 
+      b Buscar Rutas
+    li(class=pesComo)
+     a(href='/') 
+      b ¿Cómo escogimos las rutas?
+  #contenido
+   block content
+  
+  #contacto
+   #escudo
+    img(src='/images/escudo.png')
+   #autores 
+    p Oscar Alonso Beltrán &nbsp; &nbsp; - &nbsp;&nbsp; Viviana Cadena Díaz &nbsp;&nbsp; - &nbsp;&nbsp; Arley Carantón Galeano 
+    p Universidad Distrital Francisco José de Caldas 
+    p Ingeniería de Sistemas
+    p Geomática
+    p 2015-1
