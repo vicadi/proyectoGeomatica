@@ -2,11 +2,11 @@ extends ../../../views/layout
 
 block content
   #verRutas
-    form(action="script.php" method="post")
+    form(method="post")
       #lista
         h2 RUTAS
         br 
-        select(name="listaRutas" class="form-control")    
+        select#selectVerRuta(name="listaRutas" class="form-control")    
           option(value="none" selected="selected") Seleccione una opción
           option(value="ruta1") Ruta 1
           option(value="ruta2") Ruta 2

@@ -1,9 +1,60 @@
+//Variables
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
+//BD
+  var rutas=[
+    { 
+      name:"Ruta1",
+      request:{
+      origin: new google.maps.LatLng(4.761926, -74.037345), 
+      destination: new google.maps.LatLng(4.628005, -74.065358),
+      waypoints: [
+        { 
+          location: new google.maps.LatLng(4.706635, -74.053643),
+          stopover:true
+        },{ 
+          location:new google.maps.LatLng(4.674281, -74.047535),
+          stopover:true
+        },{  
+          location:new google.maps.LatLng(4.654789, -74.055392),
+          stopover:true
+        }],
+      provideRouteAlternatives: false,
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC
+      }, 
+      barrios:["verbenal","usaquen"]
+    },{
+      name:"Ruta2",
+      request:{
+      origin: new google.maps.LatLng(4.674281, -74.047535), 
+      destination: new google.maps.LatLng(4.643828, -74.187535),
+      provideRouteAlternatives: false,
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC
+      }, 
+      barrios:["margarita","estancia"]
+    }
+  ];
+
 $(document).ready(function(){
-  if(window.location.pathname=="/rutas/verRutas"){
-    google.maps.event.addDomListener(window, 'load', initialize('mapaVerRutas'));
+  if(window.location.pathname=="/rutas/verRutas"){    
+    initialize("mapaVerRutas");
+    $(document).on("change","#selectVerRuta",function(){
+      var request;
+      if($('#selectVerRuta option:selected').val("ruta1")){
+        request = rutas[0].request;
+        repintar(request);
+      }
+      if($('#selectVerRuta option:selected').val("ruta2")){
+        request = rutas[1].request;
+        repintar(request);
+      }
+    });
   }
   if(window.location.pathname=="/rutas/buscarRutas"){
-    google.maps.event.addDomListener(window, 'load', initialize('mapaBuscarRutas'));
+    initialize("mapaBuscarRutas");
     $("#buscarRutas #checkBarrio").on("click",function(){
       if($(this).is(':checked')){
         $("#buscarRutas #select #selectLocalidades").css("display","none");
@@ -102,10 +153,20 @@ $(document).ready(function(){
 
 //Ver mapa Bogota
 function initialize(div) {
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var bogota = new google.maps.LatLng(4.408045, -74.155375);
   var mapOptions = {
-    center: { lat: 4.408045, lng: -74.155375},
-    zoom: 10
-  };
-  var map = new google.maps.Map(document.getElementById(div),
-      mapOptions);
+    zoom:10,
+    center: bogota
+  }
+  map = new google.maps.Map(document.getElementById(div), mapOptions);
+  directionsDisplay.setMap(map);
+}
+
+function repintar(request){
+  directionsService.route(request, function(result, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(result);
+    }
+  });
 }
