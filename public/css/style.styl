@@ -64,6 +64,7 @@ a:hover
     p
       font-family 'Arial', 'cursive' , 'bolt'
       font-size 25px
+
 #contacto
   border-top 3px solid #EA1919
   float left
@@ -84,4 +85,106 @@ a:hover
     width 65%
     padding 2% 2% 2% 0
     float left
-  
+
+#verRutas
+  #lista
+    padding 2% 5%
+    text-align center
+    h2
+      color white
+    select
+      color gray
+      width 30%
+      margin auto
+  #mapaVerRutas
+    min-height 600px
+    margin 3% 4%
+    padding 0  
+
+#buscarRutas
+  padding 2%
+  h2 
+    color white
+    text-align center
+    padding 2%
+  #opciones
+    width 100%
+    float left
+    margin auto
+    text-align center
+    #barrio
+      width 30%
+      padding-left 7%
+      float left
+    #localidad
+      padding-left 7%
+      width 30%
+      float left
+    span 
+      color white
+      float left
+      margin 0 !important
+      width auto !important
+      padding-left 1% !important
+      padding-top 1% !important
+    .checkboxBuscar
+      width 20px
+      height 20px 
+      float left
+      padding-top 1%
+      :hover 
+        cursor pointer
+      input 
+        display none
+
+      span 
+        width 20px !important
+        height 20px
+        display block
+        background-color #60be51
+        border 1.8px solid white          
+
+      input:checked + span 
+        background-color #116B15
+        padding 4%
+    #select
+      width 40%
+      float left
+      text-align center
+      select
+        width 90%
+  #listaResultado
+    width 96%
+    float left
+    margin 3% 2% 1% 2% 
+    ul 
+      background-color white
+      margin auto
+      width 25%
+      color gray
+      text-align center
+      li 
+        padding 1%
+        a 
+          color gray
+        a:hover
+          color #60be51
+          text-decoration none
+  #mapaBuscarRutas
+    float left
+    width 92%
+    min-height 600px
+    margin 3% 4%
+    padding 0 
+
+.container
+  width auto 
+  a:hover
+    text-decoration none
+  .bb-custom-wrapper
+    width 100%
+    #bb-bookblock
+      min-height 546px
+      width 80%
+      img
+        width 100%

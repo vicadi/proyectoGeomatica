@@ -2,12 +2,19 @@ doctype html
 html
  head
   meta(charset="utf-8")
-  title= title
-  script(type='text/javascript', src='/js/jquery-1.10.2.js')
-  script(type='text/javascript', src='/js/bootstrap.js')
-  script(type='text/javascript', src='/js/script.js')
+  title= title  
+  link(rel="stylesheet" type="text/css" href="/css/default.css")
+  link(rel="stylesheet" type="text/css" href="/css/bookblock.css")
+  link(rel="stylesheet" type="text/css" href="/css/demo1.css")
   link(rel='stylesheet', href='/css/bootstrap.min.css')
   link(rel='stylesheet', href='/css/style.css')
+  script(type='text/javascript', src='/js/jquery-1.10.2.js')
+  script(src="/js/modernizr.custom.js")
+  script(src="/js/jquerypp.custom.js")
+  script(src="/js/jquery.bookblock.js")
+  script(type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCMYyHPbSaPQ0VeuIpELGBYP-dbAKQG1Pg')
+  script(type='text/javascript', src='/js/bootstrap.js')
+  script(type='text/javascript', src='/js/script.js')
  body
   #logo
     a(href='/') 
@@ -20,23 +27,22 @@ html
      a(href='/') 
       b Home
     li(class=pesVerRutas)
-     a(href='/') 
+     a(href='/rutas/verRutas') 
       b Ver Rutas
     li(class=pesBuscarRutas)
-     a(href='/') 
+     a(href='/rutas/buscarRutas') 
       b Buscar Rutas
-    li(class=pesComo)
-     a(href='/') 
+    li(class=pesExposicion)
+     a(href='/rutas/exposicion') 
       b ¿Cómo escogimos las rutas?
   #contenido
-   block content
+    block content
   
   #contacto
    #escudo
     img(src='/images/escudo.png')
    #autores 
     p Oscar Alonso Beltrán &nbsp; &nbsp; - &nbsp;&nbsp; Viviana Cadena Díaz &nbsp;&nbsp; - &nbsp;&nbsp; Arley Carantón Galeano 
-    p Universidad Distrital Francisco José de Caldas 
-    p Ingeniería de Sistemas
-    p Geomática
+    p Universidad Distrital Francisco José de Caldas &nbsp; &nbsp; - &nbsp;&nbsp; Ingeniería de Sistemas
+    p Geomática &nbsp; &nbsp; - &nbsp;&nbsp; Docente: Marco Antonio Pérez
     p 2015-1

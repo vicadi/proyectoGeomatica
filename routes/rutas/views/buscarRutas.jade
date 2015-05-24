@@ -1,0 +1,36 @@
+extends ../../../views/layout
+
+block content
+  #buscarRutas
+    h2 BUSQUEDA DE RUTAS
+    #opciones
+      #barrio 
+        label.checkboxBuscar
+          input#checkBarrio(type="checkbox" name="barrio" checked)
+          span
+        span  &nbsp; POR BARRIO
+      #localidad 
+        label.checkboxBuscar
+          input#checkLocalidad(type="checkbox" name="localidad")
+          span
+        span  &nbsp; POR LOCALIDAD
+      #select
+        select#selectBarrios(name="listaBarrios" class="form-control")
+          option(value="none" selected="selected") Seleccione un barrio
+          option(value="ruta1") Barrio 1
+          option(value="ruta2") Barrio 2
+          option(value="ruta3") Barrio 3
+        select#selectLocalidades(name="listaLocalidades" class="form-control" style="display:none")
+          option(value="none" selected="selected") Seleccione una localidad
+          option(value="ruta1") Localidad 1
+          option(value="ruta2") Localidad 2
+          option(value="ruta3") Localidad 3
+    #listaResultado(style="display:none")
+      ul(style="list-style-type:circle")
+        li 
+          a(href="#") Resultado1
+        li 
+          a(href="#") Resultado2
+        li
+          a(href="#") Resultado3
+    #mapaBuscarRutas
