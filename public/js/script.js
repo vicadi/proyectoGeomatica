@@ -5,13 +5,13 @@
   var valor;
 
 $(document).ready(function(){
-  for(var i=0, j=rutas.length; i<j; i++){
-    $('#selectVerRuta').append('<option value='+rutas[i].valor+'>'+rutas[i].nombre+'</option>');
-  }
-  valor=$(document).getUrlParam("valor");
-  if(valor!=="")
-    seleccionarRuta(valor);
   if(window.location.pathname=="/rutas/verRutas"){  
+    for(var i=0, j=rutas.length; i<j; i++){
+      $('#selectVerRuta').append('<option value='+rutas[i].valor+'>'+rutas[i].nombre+'</option>');
+    }
+    valor=$(document).getUrlParam("valor");
+    if(valor!=="")
+      seleccionarRuta(valor);
     var seleccion=$('#selectVerRuta option:selected').val();
     initialize("mapaVerRutas");    
     if(seleccion!=="none"){
