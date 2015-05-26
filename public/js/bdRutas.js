@@ -1,6 +1,6 @@
 var rutas=[
   { 
-    nombre:"EJEMPLO",
+    nombre:"VERBENAL",
     valor:"VERBENAL",
     origen:"Calle 120 Carrera 7",
     destino: "Carrera 7 Calle 40",
