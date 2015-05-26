@@ -2,59 +2,41 @@
   var directionsDisplay;
   var directionsService = new google.maps.DirectionsService();
   var map;
-//BD
-  var rutas=[
-    { 
-      name:"Ruta1",
-      request:{
-      origin: new google.maps.LatLng(4.761926, -74.037345), 
-      destination: new google.maps.LatLng(4.628005, -74.065358),
-      waypoints: [
-        { 
-          location: new google.maps.LatLng(4.706635, -74.053643),
-          stopover:true
-        },{ 
-          location:new google.maps.LatLng(4.674281, -74.047535),
-          stopover:true
-        },{  
-          location:new google.maps.LatLng(4.654789, -74.055392),
-          stopover:true
-        }],
-      provideRouteAlternatives: false,
-      travelMode: google.maps.TravelMode.DRIVING,
-      unitSystem: google.maps.UnitSystem.METRIC
-      }, 
-      barrios:["verbenal","usaquen"]
-    },{
-      name:"Ruta2",
-      request:{
-      origin: new google.maps.LatLng(4.674281, -74.047535), 
-      destination: new google.maps.LatLng(4.643828, -74.187535),
-      provideRouteAlternatives: false,
-      travelMode: google.maps.TravelMode.DRIVING,
-      unitSystem: google.maps.UnitSystem.METRIC
-      }, 
-      barrios:["margarita","estancia"]
-    }
-  ];
+  var valor;
 
 $(document).ready(function(){
-  if(window.location.pathname=="/rutas/verRutas"){    
-    initialize("mapaVerRutas");
+  for(var i=0, j=rutas.length; i<j; i++){
+    $('#selectVerRuta').append('<option value='+rutas[i].valor+'>'+rutas[i].nombre+'</option>');
+  }
+  valor=$(document).getUrlParam("valor");
+  if(valor!=="")
+    seleccionarRuta(valor);
+  if(window.location.pathname=="/rutas/verRutas"){  
+    var seleccion=$('#selectVerRuta option:selected').val();
+    initialize("mapaVerRutas");    
+    if(seleccion!=="none"){
+      pintarRuta(seleccion);
+      $("#detallesRuta").css("display","inherit");
+    }
+    valor="none";
     $(document).on("change","#selectVerRuta",function(){
-      var request;
-      if($('#selectVerRuta option:selected').val("ruta1")){
-        request = rutas[0].request;
-        repintar(request);
-      }
-      if($('#selectVerRuta option:selected').val("ruta2")){
-        request = rutas[1].request;
-        repintar(request);
+      seleccion=$('#selectVerRuta option:selected').val();
+      if(seleccion==="none"){
+        $("#detallesRuta").css("display","none");
+        initialize("mapaVerRutas");
+      }else{
+        $("#detallesRuta").css("display","inherit");
+        pintarRuta(seleccion);
       }
     });
   }
   if(window.location.pathname=="/rutas/buscarRutas"){
-    initialize("mapaBuscarRutas");
+    for(var i=0, j=localidades.length; i<j;i++){
+      $("#buscarRutas #select #selectLocalidades").append('<option value='+localidades[i].valor+'>'+localidades[i].nombre+'</option>');
+    }    
+    for(var i=0, j=barrios.length; i<j;i++){
+      $("#buscarRutas #select #selectBarrios").append('<option value='+barrios[i].valor+'>'+barrios[i].nombre+'</option>');
+    }
     $("#buscarRutas #checkBarrio").on("click",function(){
       if($(this).is(':checked')){
         $("#buscarRutas #select #selectLocalidades").css("display","none");
@@ -77,6 +59,47 @@ $(document).ready(function(){
         $("#buscarRutas #checkBarrio").attr("checked",true);
       }
     }); 
+    $(document).on("change","#selectLocalidades",function(){
+      $("#buscarRutas #listaResultado ul").empty();
+      var seleccionLocalidad = $('#selectLocalidades option:selected').val();
+      if(seleccionLocalidad==="none"){
+        $("#buscarRutas #listaResultado p").css("display","none");
+        $("#buscarRutas #listaResultado ul").append("<li>Seleccione una Localidad</li>");
+      }else{
+        $("#buscarRutas #listaResultado p").css("display","inherit");
+        for(var i=0, j=localidades.length;i<j;i++){
+          if(seleccionLocalidad===localidades[i].valor){
+            for(var k=0, l=localidades[i].rutas.length;k<l;k++){
+              $("#buscarRutas #listaResultado ul").append("<li><a class='ruta' href='javascript:void(0);' valor='"
+                +localidades[i].rutas[k].valor+"'>"+localidades[i].rutas[k].nombre+"</a></li>");  
+            }
+            i=localidades.length;
+          }
+        }  
+      }
+    });
+    $(document).on("change","#selectBarrios",function(){
+      $("#buscarRutas #listaResultado ul").empty();
+      var seleccionBarrios = $('#selectBarrios option:selected').val();
+      if(seleccionBarrios==="none"){
+        $("#buscarRutas #listaResultado p").css("display","none");
+        $("#buscarRutas #listaResultado ul").append("<li>Seleccione un Barrio</li>");
+      }else{
+        $("#buscarRutas #listaResultado p").css("display","inherit");
+        for(var i=0, j=barrios.length;i<j;i++){
+          if(seleccionBarrios===barrios[i].valor){
+            for(var k=0, l=barrios[i].rutas.length;k<l;k++){
+              $("#buscarRutas #listaResultado ul").append("<li><a class='ruta' href='javascript:void(0);' valor='"+
+                barrios[i].rutas[k].valor+"'>"+barrios[i].rutas[k].nombre+"</a></li>");  
+            }
+            i=barrios.length;
+          }
+        }  
+      }
+    });
+    $("#buscarRutas #listaResultado").on('click', 'a.ruta',function(){
+      document.location.href = "/rutas/verRutas?valor="+$(this).attr("valor");
+    });
   }
   if(window.location.pathname=="/rutas/exposicion"){
     var Page = (function() {        
@@ -169,4 +192,31 @@ function repintar(request){
       directionsDisplay.setDirections(result);
     }
   });
+}
+function seleccionarRuta(valor){
+  $("#selectVerRuta option[value="+ valor +"]").attr("selected",true);
+}
+function pintarRuta(seleccion){
+  for(var i=0, j=rutas.length; i<j; i++){
+    if(seleccion===rutas[i].valor){
+      var request = rutas[i].request;
+      repintar(request);
+      $("#detallesRuta #valores #nombre").text(rutas[i].nombre);
+      $("#detallesRuta #valores #duracionHoraPico").text(rutas[i].duracionHoraPico);
+      $("#detallesRuta #valores #duracionHoraValle").text(rutas[i].duracionHoraValle);
+      $("#detallesRuta #valores #origen").text(rutas[i].origen);
+      $("#detallesRuta #valores #destino").text(rutas[i].destino);
+      $("#detallesRuta #valores #distancia").text(rutas[i].distancia);
+      var lugares;
+      for(var k=0, l=rutas[i].lugaresInteres.length; k<l; k++){
+        if(k===0){
+          $("#detallesRuta #valores #lugaresInteres").html(rutas[i].lugaresInteres[k]);
+        }else{
+          $("#detallesRuta #valores #lugaresInteres").html(lugares+"<br>"+rutas[i].lugaresInteres[k]);
+        }
+        lugares = $("#detallesRuta #valores #lugaresInteres").html();
+      }
+      i=rutas.length;
+    }
+  }
 }

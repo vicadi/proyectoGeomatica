@@ -2,30 +2,27 @@ extends ../../../views/layout
 
 block content
   #verRutas
-    form(method="post")
-      #lista
-        h2 RUTAS
-        br 
-        select#selectVerRuta(name="listaRutas" class="form-control")    
-          option(value="none" selected="selected") Seleccione una opción
-          option(value="ruta1") Ruta 1
-          option(value="ruta2") Ruta 2
-          option(value="ruta3") Ruta 3
-          option(value="ruta4") Ruta 4
-          option(value="ruta5") Ruta 5
-          option(value="ruta6") Ruta 6
-          option(value="ruta7") Ruta 7
-          option(value="ruta8") Ruta 8
-          option(value="ruta9") Ruta 9
-          option(value="ruta10") Ruta 10
-          option(value="ruta11") Ruta 11
-          option(value="ruta12") Ruta 12
-          option(value="ruta13") Ruta 13
-          option(value="ruta14") Ruta 14
-          option(value="ruta15") Ruta 15
-          option(value="ruta16") Ruta 16
-          option(value="ruta17") Ruta 17
-          option(value="ruta18") Ruta 18
-          option(value="ruta19") Ruta 19
-          option(value="ruta20") Ruta 20
+    #lista
+      h2 RUTAS
+      br 
+      select#selectVerRuta(name="listaRutas" class="form-control")    
+        option(value="none" selected="selected") Seleccione una opción
     #mapaVerRutas
+    #detallesRuta(style="display:none")
+      h3 Datos Ruta 
+      #etiquetas
+        span Nombre:
+        span Duración Hora Pico:
+        span Duración Hora Valle:
+        span Origen:
+        span Destino:
+        span Distancia:
+        span Lugares de Interés:
+      #valores
+        span#nombre 
+        span#duracionHoraPico
+        span#duracionHoraValle
+        span#origen
+        span#destino 
+        span#distancia 
+        span#lugaresInteres
