@@ -1,4 +1,6 @@
 var localidades=[
+  {nombre:"ANTONIO NARIÑO", valor: "ANTONIO_NARINO", rutas:[{nombre:"MOCHUELO",valor:"MOCHUELO"}]
+  },
   {nombre:"BARRIOS UNIDOS", valor: "BARRIOS_UNIDOS", rutas:[{nombre:"ENGATIVA CENTRO",valor:"ENGATIVA_CENTRO"},
     {nombre:"ENGATIVA CALLE 80",valor:"ENGATIVA_CALLE_80"},{nombre:"EL CARMEN FONTIBON",valor:"EL_CARMEN_FONTIBON"}]
   },
@@ -29,6 +31,12 @@ var localidades=[
   {nombre:"PUENTE ARANDA", valor: "PUENTE_ARANDA", rutas:[{nombre:"FONTIBON MONTEVIDEO",valor:"FONTIBON_MONTEVIDEO"},
     {nombre:"BRASILIA",valor:"BRASILIA"},{nombre:"EL_RECREO",valor:"EL_RECREO"}]
   },
+  {nombre:"RAFAEL URIBE", valor:"RAFAEL_URIBE", rutas:[{nombre:"MOCHUELO",valor:"MOCHUELO"},
+    {nombre:"QUINTAS DEL SUR",valor:"QUINTAS_DEL_SUR"},{nombre:"VERBENAL DEL SUR",valor:"VERBENAL_DEL_SUR"},
+    {nombre:"CASALOMA",valor:"CASALOMA"}]
+  },
+  {nombre:"SAN CRISTOBAL", valor: "SAN_CRISTOBAL", rutas:[{nombre:"QUINTAS DEL SUR",valor:"QUINTAS_DEL_SUR"}]
+  },
   {nombre:"SANTA FE", valor: "SANTA_FE", rutas:[{nombre:"BRASILIA",valor:"BRASILIA"}]
   },
   {nombre:"SUBA", valor: "SUBA", rutas:[{nombre:"SUBA CENTRO",valor:"SUBA_CENTRO"},
@@ -41,5 +49,8 @@ var localidades=[
   },
   {nombre:"USAQUEN", valor:"USAQUEN", rutas:[{nombre:"VERBENAL",valor:"VERBENAL"},
     {nombre:"SUBA CENTRO",valor:"SUBA_CENTRO"},{nombre:"SUBA ORIENTAL",valor:"SUBA_ORIENTAL"}]
+  },
+  {nombre:"USME", valor:"USME", rutas:[{nombre:"VERBENAL DEL SUR",valor:"VERBENAL_DEL_SUR"},
+    {nombre:"CASALOMA",valor:"CASALOMA"}]
   }
 ];

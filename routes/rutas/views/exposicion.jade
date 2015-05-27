@@ -5,16 +5,11 @@ block content
     .main.clearfix
       .bb-custom-wrapper
         #bb-bookblock.bb-bookblock
-          .bb-item
-            img(src="/images/diapositivas/1.jpg" alt="image01")
-          .bb-item
-            img(src="/images/diapositivas/2.jpg" alt="image02")
-          .bb-item
-            img(src="/images/diapositivas/3.jpg" alt="image03")
-          .bb-item
-            img(src="/images/diapositivas/4.jpg" alt="image04")
-          .bb-item
-            img(src="/images/diapositivas/5.jpg" alt="image05")
+          -var contador=12
+          -var i =1
+          while i<=contador
+            .bb-item
+              img(src="/images/diapositivas/"+i+".jpg" alt="image"+i)
         nav
           a#bb-nav-first.bb-custom-icon.bb-custom-icon-first(href="#") First page
           a#bb-nav-prev.bb-custom-icon.bb-custom-icon-arrow-left(href="#") Previous
