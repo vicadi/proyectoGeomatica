@@ -76,7 +76,7 @@ $(document).ready(function(){
             i=localidades.length;
           }
         }  
-      }
+      }    
     });
     $(document).on("change","#selectBarrios",function(){
       $("#buscarRutas #listaResultado ul").empty();
