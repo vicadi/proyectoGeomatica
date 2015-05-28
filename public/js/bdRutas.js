@@ -7,7 +7,7 @@ var rutas=[
     distancia: "28,9 km",
     duracionHoraPico: "1 hora 30 minutos",
     duracionHoraValle: "50 minutos",
-    lugaresInteres:["Biblioteca sjkfsd", "CAI dkjhfsd", "Sede lskjfskd","Hospital sijfsdjf"],
+    lugaresInteres:["Biblioteca sjkfsd", "CAI dkjhfsd", "Sede lskjfskd","Hospital sijfsdjf","Museo sfjsjk"],
     request:{
     origin: new google.maps.LatLng(4.761927, -74.037359), 
     destination: new google.maps.LatLng(4.627385, -74.065534),
@@ -39,7 +39,7 @@ var rutas=[
     distancia: "21,3 Km",
     duracionHoraPico: "1 Hora 10 minutos",
     duracionHoraValle: "55 minutos",
-    lugaresInteres:["Biblioteca dskhdsf", "CAI skjhsfkj", "Sede sjklsdfj", "Hospital cvckkded"],
+    lugaresInteres:["Biblioteca dskhdsf", "CAI skjhsfkj", "Sede sjklsdfj", "Hospital cvckkded","Museo rirututu"],
     request:{
     origin: new google.maps.LatLng(4.719958, -74.058428), 
     destination: new google.maps.LatLng(4.629808, -74.066839),
@@ -69,7 +69,7 @@ var rutas=[
     distancia: "30.7 Km",
     duracionHoraPico: "1 hora 28 minutos",
     duracionHoraValle: "58 minutos",
-    lugaresInteres:["Biblioteca skhjfsdjhf", "CAI skjhfhjsd", "Sede ppoijddd", "Hospital Engativa"],
+    lugaresInteres:["Biblioteca skhjfsdjhf", "CAI skjhfhjsd", "Sede ppoijddd", "Hospital Engativa","Museo sskweruisr"],
     request:{
     origin: new google.maps.LatLng(4.710531, -74.124891), 
     destination: new google.maps.LatLng(4.629808, -74.066839),
@@ -99,7 +99,7 @@ var rutas=[
     distancia: "38.6 Km",
     duracionHoraPico: "1 Hora 58 minutos",
     duracionHoraValle: "1 Hora 3 minutos",
-    lugaresInteres:["Biblioteca Tintal","CAI Brasilia", "Sede Ciencias de la Salud", "Hospital Kennedy"],
+    lugaresInteres:["Biblioteca Tintal","CAI Brasilia", "Sede Ciencias de la Salud", "Hospital Kennedy","Museo fñflgfdjg"],
     request:{
     origin: new google.maps.LatLng(4.633161, -74.200962), 
     destination: new google.maps.LatLng(4.629011, -74.066987),
